@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.menu-item {
+    margin: 1em;
+}
+
+#container {
+    min-width: 50%;
+    min-height: 30%;
+}
+
+#studenti {
+    height: 30%;
+    background-color: snow;
+}
+
+#predmeti {
+    height: 30%;
+    background-color: beige;
+}
+
+#ocene {
+    height: 30%;
+    background-color: cornsilk;
+}
+
+#tab-studenti {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tab-studenti td,
+#tab-studenti th {
+    padding: 8px;
+}
+
+#tab-studenti tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tab-studenti tr:hover {
+    background-color: #ddd;
+}
+
+#tab-studenti th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: wheat;
+    color: white;
+}
+
+.showOcene:hover {
+    cursor: grab;
+}
+
+.selected {
+    background-color: brown !important;
+    color: #FFF;
+}
