@@ -50,6 +50,53 @@ require('crud.php');
 
                     </tr>
                     <!-- add php here -->
+                    <?php
+
+
+                    $result_student = $coll_student->find();
+
+                    $counter = 0;
+                    foreach ($result_student as $student) :
+                        $counter += 1;
+                        $id = "stud" . $counter;
+                    ?>
+                        <tr id=<?php echo $id; ?>>
+                            <td><?php echo $student['ime'] ?></td>
+                            <td><?php echo $student['prezime'] ?></td>
+                            <td><?php echo $student['_id'] ?></td>
+                            <td> <i class="fas fa-caret-square-down showOcene"></i></td>
+                        </tr>
+                        <?php
+                        $result_stud_ocene = $coll_ocena->find(['student' => $student['_id']]);
+                        if ($result_stud_ocene != "") {
+
+                        ?>
+                            <tr>
+                                <td colspan="4" id="<?php echo 'ocene-' . $id ?>" hidden>
+                                    <table>
+                                        <tr>
+                                            <th>Predmet</th>
+                                            <th>Ocena</th>
+                                        </tr>
+                                        <?php foreach ($result_stud_ocene as $ocena) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $coll_predmet->findOne(["_id" => $ocena['predmet']])['naziv']; ?></td>
+                                                <td><?php echo $ocena['ocena']; ?></td>
+                                            <?php } ?>
+                                            </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        <?php
+                        } else {
+                            echo "nema ocena";
+                        }
+
+                        ?>
+
+
+                    <?php endforeach; ?>
 
                 </table>
                 <button id="prikaziDodaj">Dodaj Studenta</button>
